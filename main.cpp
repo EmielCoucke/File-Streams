@@ -4,27 +4,37 @@
 using namespace std;
 
 int main() {
-  // File stream object
-  ofstream output;
-  output.open("random.txt");    // Default mode is ios::out
 
-  if (!output) {
-    cerr << "Could not open the file in write mode" << endl;
+  ifstream input;
+  input.open("random.txt");  
+
+  if (!input) {
+    cerr << "Could not open the file in reading mode" << endl;
   }
 
-  std::string name;
-  cout << "Please enter your name: ";
-  getline(cin, name);
+  int sum = 0;
+  int count = 0;
+  string line;
+  while (getline(input, line)) {
+    sum = sum + stoi(line);
+    count++;
+  }
 
-  int age;
-  cout << "Please enter your age: ";
-  cin >> age;
+  cout << "The sum is: " << sum << endl;
+  input.close();
 
-  // Writing the data to a file
-  output << name << " is " << age << " years of age." << endl;
+  ofstream output;
+  output.open("calculations.txt");
 
-  // Close the file
-  output.close();
+
+  int average = sum/count;
+  cout << "The average is: " << average << endl;
+
   
+ 
+  output << sum << " " << average;
+
+  output.close();
+
   return 0;
 }
