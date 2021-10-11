@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 
   ifstream input;
-  input.open("random.txt");  
+  input.open("files/random.txt");  
 
   if (!input) {
     cerr << "Could not open the file in reading mode" << endl;
@@ -24,13 +24,13 @@ int main() {
   input.close();
 
   ofstream output;
-  output.open("calculations.txt");
+  output.open("files/calculations.txt");
 
 
   int average = sum/count;
   cout << "The average is: " << average << endl;
 
-  
+
  
   output << sum << " " << average;
 
